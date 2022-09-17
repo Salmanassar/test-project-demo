@@ -160,13 +160,12 @@ public class EmployeeServiceTests {
     // Junit test for delete employee
     @DisplayName("Junit test for delete employee")
     @Test
-    public void givenEmployeeObject_whenDeleteEmployee_thenNothing ()
-    {
+    public void givenEmployeeObject_whenDeleteEmployee_thenNothing() {
         // given - precondition on setup
-    willDoNothing().given(employeeRepository).delete(employee);
+        willDoNothing().given(employeeRepository).delete(employee);
 
         // when - action or behavior that we are going to test
-employeeRepository.delete(employee);
+        employeeRepository.delete(employee);
 
         // then - verify the output
         verify(employeeRepository, times(1)).delete(employee);
