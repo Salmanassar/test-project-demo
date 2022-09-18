@@ -38,4 +38,6 @@ public interface EmployeeRepository extends Repository<Employee, Long> {
     // Define custom query using native SQL with named parameters
     @Query(value = "select * from employees e where e.first_name=:firstName and e.last_name=:lastName", nativeQuery = true)
     Optional<Employee> findEmployeeUsingNativeSQLNamedParameters(@Param("firstName") String fistName, @Param("lastName") String lastName);
+
+    void deleteAll();
 }
