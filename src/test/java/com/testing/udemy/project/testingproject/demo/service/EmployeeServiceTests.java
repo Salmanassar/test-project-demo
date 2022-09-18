@@ -170,4 +170,17 @@ public class EmployeeServiceTests {
         // then - verify the output
         verify(employeeRepository, times(1)).delete(employee);
     }
+
+    @DisplayName("Junit test for delete employee by id")
+    @Test
+    public void givenEmployeeObject_whenDeleteEmployeeById_thenNothing() {
+        // given - precondition on setup
+        willDoNothing().given(employeeRepository).deleteEmployeeById(employee.getId());
+
+        // when - action or behavior that we are going to test
+        employeeRepository.deleteEmployeeById(employee.getId());
+
+        // then - verify the output
+        verify(employeeRepository, times(1)).deleteEmployeeById(employee.getId());
+    }
 }

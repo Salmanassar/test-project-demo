@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,8 @@ public interface EmployeeRepository extends Repository<Employee, Long> {
     Optional<Employee> findEmployeeByEmail(String email);
 
     void delete(Employee employee);
+
+    void deleteEmployeeById(Long id);
 
     // Define custom query using JPQL with index parameters
     @Query("select e from Employee e where e.firstName=?1 and e.lastName=?2")

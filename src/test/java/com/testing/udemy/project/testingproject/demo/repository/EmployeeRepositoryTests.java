@@ -112,7 +112,8 @@ public class EmployeeRepositoryTests {
         assertThat(employeeDb.getEmail()).isEqualTo(employee2.getEmail());
     }
 
-    // Junit test for
+    // Junit test for update employee
+    @DisplayName("Junit test for update employee")
     @Test
     public void givenEmployeeObject_whenUpdateEmployee_thenReturnUpdatedEmployee() {
 
@@ -131,6 +132,7 @@ public class EmployeeRepositoryTests {
     }
 
     // Junit test for delete employee operation
+    @DisplayName("Junit test for delete employee")
     @Test
     public void givenEmployeeObject_whenDelete_thenRemoveEmployee() {
 
@@ -140,6 +142,22 @@ public class EmployeeRepositoryTests {
         // when - action or behavior that we are going to test
         employeeRepository.delete(employee);
         Optional<Employee> employeeRemoved = employeeRepository.getEmployeeById(employee.getId());
+
+        // then - verify the output
+        assertThat(employeeRemoved).isEmpty();
+    }
+
+    @DisplayName("Junit test for delete employee by id")
+    @Test
+    public void givenEmployeeObject_whenDeleteById_thenReturnEmptyObject() {
+
+        // given - precondition on setup
+        employeeRepository.save(employee);
+        long employeeId = employee.getId();
+
+        // when - action or behavior that we are going to test
+        employeeRepository.deleteEmployeeById(employeeId);
+        Optional<Employee> employeeRemoved = employeeRepository.getEmployeeById(employeeId);
 
         // then - verify the output
         assertThat(employeeRemoved).isEmpty();
